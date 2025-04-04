@@ -15,6 +15,7 @@ namespace vericode_test.Support
         public static IWebDriver driver;
         public static CookieCollection cookie;
         public static Helpers help = new Helpers();
+        public static Random random = new Random();
 
         [BeforeScenario]
         public static void BeforeScenario(FeatureContext featureContext, ScenarioContext scenarioContext)
