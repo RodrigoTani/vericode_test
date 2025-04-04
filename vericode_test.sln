@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vericode_test", "vericode_test\vericode_test.csproj", "{D071DC25-AFB9-4E89-9151-B070B7D13167}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D071DC25-AFB9-4E89-9151-B070B7D13167}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D071DC25-AFB9-4E89-9151-B070B7D13167}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D071DC25-AFB9-4E89-9151-B070B7D13167}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D071DC25-AFB9-4E89-9151-B070B7D13167}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F3DA0558-DB6B-4B62-A089-5A8DDDF0F7C0}
+	EndGlobalSection
+EndGlobal
