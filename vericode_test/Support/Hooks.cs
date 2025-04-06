@@ -1,7 +1,9 @@
-﻿using OpenQA.Selenium;
+﻿using Allure.Net.Commons;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -16,6 +18,13 @@ namespace vericode_test.Support
         public static CookieCollection cookie;
         public static Helpers help = new Helpers();
         public static Random random = new Random();
+        public static AllureLifecycle allure = AllureLifecycle.Instance;
+
+        [BeforeTestRun]
+        public static void BeforeTestRun()
+        {
+            allure.CleanupResultDirectory();
+        }
 
         [BeforeScenario]
         public static void BeforeScenario(FeatureContext featureContext, ScenarioContext scenarioContext)
@@ -53,6 +62,15 @@ namespace vericode_test.Support
         
         [AfterScenario]
         public static void AfterScenario(FeatureContext featureContext, ScenarioContext scenarioContext)
+        {
+            if (scenarioContext.TestError != null)
+            {
+                help.take_screenshot();
+            }
+        }
+
+        [AfterTestRun]
+        public static void AfterTestRun()
         {
             driver.Quit();
         }
