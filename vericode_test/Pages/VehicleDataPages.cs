@@ -25,19 +25,43 @@ namespace vericode_test.Pages
 
         public void validacao_campos()
         {
-            var cylinder_Capacity = "1833";
+            string isErrorDisplayed;
+            //Teste de limite - Campo List Price - Cenário: Menor
+                var list_Price = "499";
+                driver.FindElement(By.Id("listprice")).SendKeys(list_Price);
 
-            //Teste de limite - menor
-            var list_Price = "499";
-            driver.FindElement(By.Id("listprice")).SendKeys(list_Price);
+                isErrorDisplayed = driver.FindElement(By.CssSelector("div[class='field idealforms-field idealforms-field-text invalid']")).FindElement(By.CssSelector("span[class='error']")).GetAttribute("style");
 
-            list_Price = "200000";
-            driver.FindElement(By.Id("listprice")).SendKeys(list_Price);
+                if (isErrorDisplayed == "display: block;")
+                {
+                    Console.WriteLine("Erro exibido corretamente para o campo List Price");
+                }
+                else
+                {
+                    throw new Exception("Erro não exibido para o campo List Price");
+                }
+
+                driver.FindElement(By.Id("listprice")).Clear();
+            //Teste de limite - Campo List Price - Cenário: Maior
+                list_Price = "200000";
+                driver.FindElement(By.Id("listprice")).SendKeys(list_Price);
+
+                isErrorDisplayed = driver.FindElement(By.CssSelector("div[class='field idealforms-field idealforms-field-text invalid']")).FindElement(By.CssSelector("span[class='error']")).GetAttribute("style");
+
+                if (isErrorDisplayed == "display: block;")
+                {
+                    Console.WriteLine("Erro exibido corretamente para o campo List Price");
+                }
+                else
+                {
+                    throw new Exception("Erro não exibido para o campo List Price");
+                }
+                driver.FindElement(By.Id("listprice")).Clear();
         }
 
         public void preencher_formulario()
         {
-        //Dados do veículo
+            //Dados do veículo
             var make = "Honda";
             var model = "Motorcycle";
             var cylinder_Capacity = "1833";
@@ -52,13 +76,13 @@ namespace vericode_test.Pages
             var license_Plate_Number = "TEST123";
             var annual_Mileage = "20000";
 
-        //Elementos
+            //Elementos
             SelectElement select_make = new SelectElement(driver.FindElement(By.Id("make")));
             select_make.SelectByText(make);
-            
+
             SelectElement select_model = new SelectElement(driver.FindElement(By.Id("model")));
             select_model.SelectByText(model);
-            
+
             driver.FindElement(By.Id("cylindercapacity")).SendKeys(cylinder_Capacity);
             driver.FindElement(By.Id("engineperformance")).SendKeys(engine_Performance);
             driver.FindElement(By.Id("dateofmanufacture")).SendKeys(date_of_Manufacture);
@@ -84,7 +108,7 @@ namespace vericode_test.Pages
 
             SelectElement select_fuel = new SelectElement(driver.FindElement(By.Id("fuel")));
             select_fuel.SelectByText(fuel_Type);
-            
+
             driver.FindElement(By.Id("payload")).SendKeys(payload);
             driver.FindElement(By.Id("totalweight")).SendKeys(total_Weight);
             driver.FindElement(By.Id("listprice")).SendKeys(list_Price);
@@ -94,9 +118,9 @@ namespace vericode_test.Pages
             driver.FindElement(By.Id("nextenterinsurantdata")).Click();
         }
 
-        public void preencher_formulario_insurance_data() 
+        public void preencher_formulario_insurance_data()
         {
-        //Dados do Solicitante
+            //Dados do Solicitante
             var FirstName = "Rodrigo";
             var LastName = "Tani";
             var DateofBirth = "02/08/1997";
@@ -106,7 +130,7 @@ namespace vericode_test.Pages
             var ZipCode = "01310100";
             var City = "São Paulo";
             var Occupation = "Employee";
-            string[] hobbies = {"Speeding","Bungee Jumping", "Cliff Diving", "Skydiving", "Other"};
+            string[] hobbies = { "Speeding", "Bungee Jumping", "Cliff Diving", "Skydiving", "Other" };
             var hobbies_selecionado = hobbies[Hooks.random.Next(0, hobbies.Length)];
             var Website = "Google.com";
             var Picture = "c:/temp/imagem.png";
@@ -148,7 +172,7 @@ namespace vericode_test.Pages
 
             driver.FindElement(By.Id("website")).SendKeys(Website);
 
-            driver.FindElement(By.Id("nextenterinsurantdata")).Click();
+            driver.FindElement(By.Id("nextenterproductdata")).Click();
         }
     }
 }

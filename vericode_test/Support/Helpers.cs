@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Allure.Net.Commons;
+using OpenQA.Selenium;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,6 +39,13 @@ namespace vericode_test.Support
                     break;
             }
             return "\n[ERRO] expect código: " + expect + "\nobtained código: " + obtained + " - " + description + "\n" + message + ".\n\n\n";
+        }
+        public void take_screenshot()
+        {
+            //Screenshot screenshot = ((ITakesScreenshot)Hooks.driver).GetScreenshot();
+            //screenshot.SaveAsFile("C:\\Users\\rodrigo.tani\\Documents\\WorkSpace\\vericode_test\\vericode_test\\Report\\" + "{0}.png");
+
+            //AllureApi.AddAttachment("Screenshot", "image/png", "/Report/Screenshot.png");
         }
     }
 }
