@@ -63,10 +63,12 @@ namespace vericode_test.Support
         [AfterScenario]
         public static void AfterScenario(FeatureContext featureContext, ScenarioContext scenarioContext)
         {
-            if (scenarioContext.TestError != null)
-            {
-                help.take_screenshot();
-            }
+            //if (scenarioContext.TestError != null)
+            //{
+            //    help.take_screenshot();
+
+            //}
+            help.take_screenshot();
         }
 
         [AfterTestRun]

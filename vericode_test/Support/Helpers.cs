@@ -1,10 +1,12 @@
 ﻿using Allure.Net.Commons;
+using LivingDoc.SpecFlowPlugin;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using vericode_test.Support;
 
 namespace vericode_test.Support
 {
@@ -40,12 +42,22 @@ namespace vericode_test.Support
             }
             return "\n[ERRO] expect código: " + expect + "\nobtained código: " + obtained + " - " + description + "\n" + message + ".\n\n\n";
         }
-        public void take_screenshot()
+        public string take_screenshot()
         {
-            //Screenshot screenshot = ((ITakesScreenshot)Hooks.driver).GetScreenshot();
-            //screenshot.SaveAsFile("C:\\Users\\rodrigo.tani\\Documents\\WorkSpace\\vericode_test\\vericode_test\\Report\\" + "{0}.png");
+            var screenshot = ((ITakesScreenshot)Hooks.driver).GetScreenshot();
+            string directoryPath = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent + "/Report";
 
-            //AllureApi.AddAttachment("Screenshot", "image/png", "/Report/Screenshot.png");
+            string filePath = Path.Combine(directoryPath, DateTime.Now.ToString("dd-MM-yy_HH-mm-ss") + ".png");
+            Thread.Sleep(1000);
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
+            screenshot.SaveAsFile(filePath);
+            AllureApi.AddAttachment(filePath);
+
+            return screenshot.AsBase64EncodedString;
         }
     }
 }
