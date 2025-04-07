@@ -35,6 +35,7 @@ namespace vericode_test.Pages
                 if (isErrorDisplayed == "display: block;")
                 {
                     Console.WriteLine("Erro exibido corretamente para o campo List Price");
+                    Hooks.help.take_screenshot();
                 }
                 else
                 {
@@ -51,6 +52,7 @@ namespace vericode_test.Pages
                 if (isErrorDisplayed == "display: block;")
                 {
                     Console.WriteLine("Erro exibido corretamente para o campo List Price");
+                    Hooks.help.take_screenshot();
                 }
                 else
                 {
